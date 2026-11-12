@@ -1,0 +1,493 @@
+
+/* ==========================
+   1. GLOBAL STYLES
+========================== */
+
+:root {
+    --navy: #101c35;
+    --navy-light: #192b4b;
+    --sky: #a9cdeb;
+    --sky-light: #dcebf8;
+    --champagne: #c5a77b;
+    --cream: #f8f6f1;
+    --white: #ffffff;
+    --text: #26344a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--cream);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==========================
+   2. NAVIGATION
+========================== */
+
+.navbar {
+    height: 85px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+}
+
+.brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.brand span {
+    color: var(--champagne);
+}
+
+.navbar nav {
+    display: flex;
+    gap: 35px;
+}
+
+.navbar nav a {
+    font-size: 12px;
+    color: #667085;
+    transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+    color: var(--navy);
+}
+
+.nav-button {
+    padding: 13px 22px;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.nav-button:hover {
+    background: var(--navy);
+    color: white;
+}
+
+/* ==========================
+   3. HERO SECTION
+========================== */
+
+.hero {
+    min-height: 650px;
+    background: var(--navy);
+    color: white;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    padding: 85px 10%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 570px;
+    z-index: 2;
+}
+
+.eyebrow {
+    color: var(--champagne);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(55px, 7vw, 90px);
+    line-height: 1.08;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    display: block;
+    font-style: italic;
+    color: var(--sky);
+}
+
+.hero-description {
+    max-width: 440px;
+    color: #c1ccdc;
+    font-size: 14px;
+    line-height: 2;
+    font-weight: 300;
+}
+
+.hero-date {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 35px 0;
+}
+
+.hero-date > span {
+    font-family: 'Playfair Display', serif;
+    font-size: 62px;
+    color: var(--sky);
+}
+
+.hero-date div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.hero-date strong {
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+.hero-date small {
+    color: #aebbd0;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--sky);
+    color: var(--navy);
+    padding: 17px 25px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.primary-button:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+/* ==========================
+   4. HERO DECORATION
+========================== */
+
+.hero-decoration {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 450px;
+}
+
+.decor-circle {
+    width: 350px;
+    height: 350px;
+    border: 1px solid rgba(169, 205, 235, 0.35);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.graduation-card {
+    width: 280px;
+    height: 355px;
+    background: #e6edf3;
+    color: var(--navy);
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+    transform: rotate(3deg);
+}
+
+.card-top,
+.card-bottom {
+    font-size: 8px;
+    letter-spacing: 3px;
+}
+
+.cap-icon {
+    font-size: 60px;
+    color: var(--champagne);
+}
+
+.graduation-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.card-line {
+    width: 50px;
+    height: 1px;
+    background: var(--champagne);
+    margin: 0 auto;
+}
+
+.graduation-card p {
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+.vertical-text {
+    position: absolute;
+    right: -55px;
+    writing-mode: vertical-rl;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--sky);
+}
+
+.hero-footer {
+    position: absolute;
+    bottom: 25px;
+    left: 10%;
+    right: 10%;
+    display: flex;
+    justify-content: space-between;
+    color: #8292aa;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* ==========================
+   5. COUNTDOWN
+========================== */
+
+.countdown-section {
+    padding: 85px 20px;
+    text-align: center;
+    background: var(--sky-light);
+}
+
+.countdown-section h2,
+.celebration-section h2,
+.rsvp-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 400;
+    color: var(--navy);
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+    margin-top: 45px;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.time-box strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: var(--navy);
+    font-weight: 400;
+}
+
+.time-box span {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #64748b;
+}
+
+/* ==========================
+   6. CELEBRATION
+========================== */
+
+.celebration-section {
+    padding: 110px 20px;
+    text-align: center;
+    max-width: 850px;
+    margin: auto;
+}
+
+.celebration-section > p:not(.eyebrow) {
+    max-width: 590px;
+    margin: 25px auto;
+    color: #697586;
+    line-height: 2;
+    font-size: 14px;
+}
+
+.event-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid #dedbd3;
+    border-bottom: 1px solid #dedbd3;
+    padding: 30px 0;
+    margin: 45px 0;
+    gap: 20px;
+}
+
+.event-details div {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.event-details span {
+    color: var(--champagne);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.event-details strong {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* ==========================
+   7. RSVP
+========================== */
+
+.rsvp-section {
+    background: var(--navy);
+    text-align: center;
+    padding: 100px 20px;
+    color: white;
+}
+
+.rsvp-section h2 {
+    color: white;
+}
+
+.rsvp-section p:not(.eyebrow) {
+    color: #b9c5d6;
+    font-size: 14px;
+    line-height: 2;
+    max-width: 450px;
+    margin: 25px auto 0;
+}
+
+/* ==========================
+   8. FOOTER
+========================== */
+
+footer {
+    padding: 25px 8%;
+    background: #0b1427;
+    color: #aebbd0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* ==========================
+   9. MOBILE RESPONSIVENESS
+========================== */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 0 6%;
+        height: 70px;
+    }
+
+    .navbar nav {
+        display: none;
+    }
+
+    .nav-button {
+        padding: 10px 13px;
+        font-size: 10px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 75px 8% 100px;
+        text-align: center;
+    }
+
+    .hero-content {
+        margin: auto;
+    }
+
+    .hero-description {
+        margin: auto;
+    }
+
+    .hero-date {
+        justify-content: center;
+    }
+
+    .hero-decoration {
+        min-height: 420px;
+        margin-top: 35px;
+    }
+
+    .vertical-text {
+        right: 0;
+    }
+
+    .hero-footer {
+        left: 8%;
+        right: 8%;
+    }
+
+    .countdown {
+        gap: 20px;
+    }
+
+    .time-box strong {
+        font-size: 34px;
+    }
+
+    .time-box span {
+        font-size: 8px;
+    }
+
+    .event-details {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        line-height: 1.8;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .countdown {
+        gap: 13px;
+    }
+
+    .time-box strong {
+        font-size: 28px;
+    }
+
+    .graduation-card {
+        width: 245px;
+    }
+}
