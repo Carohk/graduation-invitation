@@ -5,187 +5,459 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="An invitation to celebrate a special graduation milestone on 4 December 2026.">
+    <title>You're Invited | Graduation Celebration</title>
 
-    <title>A New Chapter Begins | Graduation 2026</title>
+    <meta name="description" content="You are invited to celebrate a special graduation milestone on 4 December 2026.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header class="navbar">
-        <a href="#" class="brand">C<span>.</span></a>
+    <!-- =================================
+         ENVELOPE OPENING SCREEN
+    ================================== -->
 
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#celebration">The Celebration</a>
-            <a href="#rsvp">RSVP</a>
+    <section class="envelope-screen" id="envelopeScreen">
+
+        <div class="envelope-heading">
+            <p class="eyebrow">A SPECIAL ANNOUNCEMENT</p>
+
+            <h1>YOU ARE INVITED</h1>
+
+            <p class="envelope-subheading">
+                TO A GRADUATION CELEBRATION
+            </p>
+        </div>
+
+        <button
+            class="envelope"
+            id="openEnvelope"
+            type="button"
+            aria-label="Open your graduation invitation"
+        >
+
+            <div class="envelope-back"></div>
+
+            <div class="envelope-letter">
+
+                <span class="letter-top">
+                    YOU ARE CORDIALLY INVITED
+                </span>
+
+                <h2>04 · 12 · 2026</h2>
+
+                <p>A NEW CHAPTER BEGINS</p>
+
+                <span class="letter-bottom">
+                    A CELEBRATION OF GROWTH AND ACHIEVEMENT
+                </span>
+
+            </div>
+
+            <div class="envelope-front"></div>
+
+            <div class="envelope-flap"></div>
+
+            <div class="wax-seal">
+                C
+            </div>
+
+        </button>
+
+        <p class="envelope-instruction">
+            CLICK TO OPEN
+        </p>
+
+        <p class="envelope-footer">
+            WITH LOVE · DECEMBER 2026
+        </p>
+
+    </section>
+
+
+    <!-- =================================
+         MAIN GRADUATION WEBSITE
+    ================================== -->
+
+    <main id="invitationSite" class="invitation-site is-hidden">
+
+        <!-- NAVIGATION -->
+
+        <nav class="navbar">
+
+            <a href="#home" class="brand">C.</a>
+
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#celebration">The Celebration</a>
+                <a href="#rsvp">RSVP</a>
+            </div>
+
+            <a href="#rsvp" class="nav-button">
+                Respond
+            </a>
+
         </nav>
 
-        <a href="#rsvp" class="nav-button">You're Invited</a>
-    </header>
-
-    <main>
 
         <!-- HERO SECTION -->
+
         <section class="hero" id="home">
 
             <div class="hero-content">
 
                 <p class="eyebrow">
-                    A SPECIAL MILESTONE · A NEW BEGINNING
+                    A MILESTONE · A NEW BEGINNING
+                </p>
+
+                <p class="hero-label">
+                    THE GRADUATION EDITION — 2026
                 </p>
 
                 <h1>
-                    A New Chapter
-                    <span>Begins.</span>
+                    The journey<br>
+                    was worth<br>
+                    <em>every step.</em>
                 </h1>
 
                 <p class="hero-description">
-                    With gratitude for the journey and excitement
-                    for what lies ahead, I invite you to celebrate
-                    this special milestone with me.
+                    A chapter filled with lessons, resilience and growth
+                    has led to a moment worth celebrating.
+                    I would be honoured to have you share it with me.
                 </p>
 
                 <div class="hero-date">
-                    <span>04</span>
-                    <div>
+
+                    <span class="date-number">04</span>
+
+                    <div class="date-details">
                         <strong>DECEMBER</strong>
                         <small>FRIDAY · 2026</small>
                     </div>
+
                 </div>
 
                 <a href="#celebration" class="primary-button">
-                    Explore the Invitation
+                    Discover the celebration
                     <span>↗</span>
                 </a>
 
+                <p class="hero-note">
+                    AN INVITATION TO MY SPECIAL PEOPLE
+                </p>
+
             </div>
 
-            <div class="hero-decoration">
-                <div class="decor-circle"></div>
 
-                <div class="graduation-card">
-                    <span class="card-top">THE NEXT CHAPTER</span>
+            <!-- TEMPORARY PHOTO PLACEHOLDER -->
 
-                    <div class="cap-icon">✦</div>
+            <div class="hero-visual">
 
-                    <h2>The journey<br>continues.</h2>
+                <div class="portrait-frame">
 
-                    <div class="card-line"></div>
+                    <div class="portrait-placeholder">
 
-                    <p>LEARN · GROW · BUILD · IMPACT</p>
+                        <span class="portrait-caption">
+                            THE GRADUATE · 2026
+                        </span>
 
-                    <span class="card-bottom">EST. 2026</span>
+                        <div class="portrait-monogram">
+                            04
+                        </div>
+
+                        <div class="portrait-bottom">
+                            <span>A NEW CHAPTER</span>
+                            <span>MKU · 2026</span>
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <span class="vertical-text">A MILESTONE WORTH CELEBRATING</span>
+                <div class="visual-caption">
+                    <span>01 / A MOMENT TO REMEMBER</span>
+                    <span>DECEMBER 2026</span>
+                </div>
+
             </div>
 
             <div class="hero-footer">
                 <span>GRADUATION CELEBRATION</span>
-                <span>01 — 03</span>
+                <span>04 — 12 — 2026</span>
             </div>
 
         </section>
 
-        <!-- COUNTDOWN SECTION -->
+
+        <!-- COUNTDOWN -->
+
         <section class="countdown-section">
 
-            <p class="eyebrow">THE COUNTDOWN BEGINS</p>
+            <div class="section-heading">
+                <p class="eyebrow">COUNTING DOWN</p>
 
-            <h2>Until the big day</h2>
+                <h2>
+                    The moment is getting closer.
+                </h2>
+
+                <p>
+                    Every journey deserves a moment of celebration.
+                </p>
+            </div>
 
             <div class="countdown" id="countdown">
 
-                <div class="time-box">
-                    <strong id="days">00</strong>
-                    <span>DAYS</span>
+                <div class="countdown-item">
+                    <span id="days">000</span>
+                    <small>DAYS</small>
                 </div>
 
-                <div class="time-box">
-                    <strong id="hours">00</strong>
-                    <span>HOURS</span>
+                <div class="countdown-divider"></div>
+
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <small>HOURS</small>
                 </div>
 
-                <div class="time-box">
-                    <strong id="minutes">00</strong>
-                    <span>MINUTES</span>
+                <div class="countdown-divider"></div>
+
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <small>MINUTES</small>
                 </div>
 
-                <div class="time-box">
-                    <strong id="seconds">00</strong>
-                    <span>SECONDS</span>
+                <div class="countdown-divider"></div>
+
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <small>SECONDS</small>
                 </div>
 
             </div>
 
         </section>
 
-        <!-- CELEBRATION SECTION -->
+
+        <!-- CELEBRATION DETAILS -->
+
         <section class="celebration-section" id="celebration">
 
-            <p class="eyebrow">A MOMENT TO REMEMBER</p>
+            <div class="celebration-intro">
 
-            <h2>It would mean the world<br>to have you there.</h2>
+                <p class="eyebrow">SAVE THE DATE</p>
 
-            <p>
-                Every lesson, every challenge and every little
-                victory has led to this moment. I would love
-                to share this achievement with the people
-                who make the journey meaningful.
-            </p>
+                <h2>
+                    A day to celebrate<br>
+                    <em>the journey.</em>
+                </h2>
 
-            <div class="event-details">
-                <div>
-                    <span>DATE</span>
-                    <strong>04 December 2026</strong>
-                </div>
+                <p>
+                    Your presence would make this milestone
+                    even more meaningful. Join me as I celebrate
+                    the end of one chapter and the beginning of another.
+                </p>
 
-                <div>
-                    <span>OCCASION</span>
-                    <strong>Graduation Celebration</strong>
-                </div>
-
-                <div>
-                    <span>VENUE</span>
-                    <strong>To be announced</strong>
-                </div>
             </div>
 
-            <a href="#rsvp" class="primary-button">
-                Confirm Your Attendance ↗
-            </a>
+
+            <div class="details-grid">
+
+                <div class="detail-card">
+
+                    <span class="detail-number">01</span>
+
+                    <p class="eyebrow">THE DATE</p>
+
+                    <h3>04 December</h3>
+
+                    <p>Friday, 2026</p>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <span class="detail-number">02</span>
+
+                    <p class="eyebrow">THE OCCASION</p>
+
+                    <h3>Graduation</h3>
+
+                    <p>A celebration of achievement and growth.</p>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <span class="detail-number">03</span>
+
+                    <p class="eyebrow">THE VENUE</p>
+
+                    <h3>To be confirmed</h3>
+
+                    <p>More celebration details will be shared.</p>
+
+                </div>
+
+            </div>
 
         </section>
 
-        <!-- RSVP PLACEHOLDER -->
+
+        <!-- RSVP SECTION -->
+
         <section class="rsvp-section" id="rsvp">
 
-            <p class="eyebrow">KINDLY RESPOND</p>
+            <div class="rsvp-intro">
 
-            <h2>Your presence<br>is the greatest gift.</h2>
+                <p class="eyebrow">KINDLY RESPOND</p>
 
-            <p>
-                I look forward to celebrating this milestone
-                with you. The RSVP form is coming soon.
-            </p>
+                <h2>
+                    Will you<br>
+                    <em>join me?</em>
+                </h2>
+
+                <p>
+                    I would love to know whether you will be
+                    celebrating this special day with me.
+                </p>
+
+            </div>
+
+
+            <form class="rsvp-form" id="rsvpForm">
+
+                <div class="form-group">
+
+                    <label for="fullName">
+                        Your full name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="attendance">
+                        Will you attend?
+                    </label>
+
+                    <select
+                        id="attendance"
+                        name="attendance"
+                        required
+                    >
+
+                        <option value="">
+                            Select your response
+                        </option>
+
+                        <option value="Yes">
+                            Yes, I'll be there
+                        </option>
+
+                        <option value="No">
+                            Sorry, I won't make it
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="guests">
+                        Number of guests (including you)
+                    </label>
+
+                    <select id="guests" name="guests" required>
+
+                        <option value="1">1 guest</option>
+                        <option value="2">2 guests</option>
+                        <option value="3">3 guests</option>
+                        <option value="4">4 guests</option>
+                        <option value="5">5 guests</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        A personal message (optional)
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="4"
+                        placeholder="Leave a little message..."
+                    ></textarea>
+
+                </div>
+
+
+                <button type="submit" class="submit-button">
+                    Submit RSVP
+                    <span>↗</span>
+                </button>
+
+                <p class="form-status" id="formStatus" aria-live="polite"></p>
+
+                <p class="form-note">
+                    RSVP submission will be connected to the
+                    online guest list in the next setup stage.
+                </p>
+
+            </form>
 
         </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <div class="footer-brand">
+                C.
+            </div>
+
+            <p>
+                A milestone worth remembering.
+            </p>
+
+            <span>
+                04 · 12 · 2026
+            </span>
+
+            <small>
+                MADE WITH LOVE · GRADUATION 2026
+            </small>
+
+        </footer>
 
     </main>
 
-    <footer>
-        <p>MADE WITH GRATITUDE & LOVE</p>
-        <span>© 2026 · A NEW CHAPTER BEGINS</span>
-    </footer>
 
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
