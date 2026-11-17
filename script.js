@@ -1,274 +1,153 @@
-
 // =========================================
-// GRADUATION WEBSITE JAVASCRIPT
-// =========================================
-
-
-// =========================================
-// 1. ENVELOPE OPENING
+// GRADUATION INVITATION — INTERACTIONS
 // =========================================
 
-const envelopeScreen = document.getElementById("envelopeScreen");
+// Keep the existing Google Apps Script Web App endpoint.
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwWPvOz8rVnMQfV8wjAhZJeYro0N2SJayqHOBCv4-p6Iwb_QuzEIND6HAecsffXiSX8A/exec";
 
-const openEnvelope = document.getElementById("openEnvelope");
+document.addEventListener("DOMContentLoaded", () => {
+    // Envelope opening
+    const envelopeScreen = document.getElementById("envelopeScreen");
+    const openEnvelopeButton = document.getElementById("openEnvelope");
+    const invitationSite = document.getElementById("invitationSite");
 
-const invitationSite = document.getElementById("invitationSite");
+    if (openEnvelopeButton && envelopeScreen && invitationSite) {
+        openEnvelopeButton.addEventListener("click", () => {
+            if (openEnvelopeButton.classList.contains("is-open")) return;
 
+            openEnvelopeButton.classList.add("is-open");
+            openEnvelopeButton.setAttribute("aria-expanded", "true");
 
-if (envelopeScreen && openEnvelope && invitationSite) {
-
-    openEnvelope.addEventListener("click", function () {
-
-        // Prevent multiple clicks
-        if (envelopeScreen.classList.contains("opening")) {
-            return;
-        }
-
-        // Start envelope animation
-        envelopeScreen.classList.add("opening");
-
-        openEnvelope.disabled = true;
-
-        // Reveal the main website after the envelope opens
-        setTimeout(function () {
-
-            invitationSite.classList.remove("is-hidden");
-
-            envelopeScreen.classList.add("closing");
-
-            envelopeScreen.setAttribute("aria-hidden", "true");
-
-            window.scrollTo({
-                top: 0,
-                behavior: "instant"
-            });
-
-        }, 1300);
-
-
-        // Remove the envelope from the screen
-        setTimeout(function () {
-
-            envelopeScreen.remove();
-
-        }, 2400);
-
-    });
-
-}
-
-
-
-// =========================================
-// 2. GRADUATION COUNTDOWN
-// =========================================
-
-const graduationDate = new Date(
-    "2026-12-04T00:00:00+03:00"
-).getTime();
-
-
-function updateCountdown() {
-
-    const now = new Date().getTime();
-
-    const difference = graduationDate - now;
-
-
-    const daysElement = document.getElementById("days");
-    const hoursElement = document.getElementById("hours");
-    const minutesElement = document.getElementById("minutes");
-    const secondsElement = document.getElementById("seconds");
-
-
-    if (
-        !daysElement ||
-        !hoursElement ||
-        !minutesElement ||
-        !secondsElement
-    ) {
-        return;
+            window.setTimeout(() => {
+                envelopeScreen.classList.add("is-opening");
+                invitationSite.classList.remove("is-hidden");
+                document.body.style.overflow = "auto";
+            }, 850);
+        });
     }
 
+    // Countdown to 4 December 2026.
+    // Kenya time is UTC+3. This target is midnight at the start of graduation day.
+    const graduationDate = new Date("2026-12-04T00:00:00+03:00");
 
-    if (difference <= 0) {
+    function updateCountdown() {
+        const now = new Date();
+        const difference = graduationDate.getTime() - now.getTime();
 
-        daysElement.textContent = "000";
-        hoursElement.textContent = "00";
-        minutesElement.textContent = "00";
-        secondsElement.textContent = "00";
+        const daysElement = document.getElementById("days");
+        const hoursElement = document.getElementById("hours");
+        const minutesElement = document.getElementById("minutes");
+        const secondsElement = document.getElementById("seconds");
 
-        return;
+        if (!daysElement || !hoursElement || !minutesElement || !secondsElement) return;
 
+        if (difference <= 0) {
+            daysElement.textContent = "000";
+            hoursElement.textContent = "00";
+            minutesElement.textContent = "00";
+            secondsElement.textContent = "00";
+            return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((difference / (1000 * 60)) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
+
+        daysElement.textContent = String(days).padStart(3, "0");
+        hoursElement.textContent = String(hours).padStart(2, "0");
+        minutesElement.textContent = String(minutes).padStart(2, "0");
+        secondsElement.textContent = String(seconds).padStart(2, "0");
     }
 
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000);
 
-    const days = Math.floor(
-        difference / (1000 * 60 * 60 * 24)
-    );
+    // RSVP form and conditional guest count.
+    const rsvpForm = document.getElementById("rsvpForm");
+    const formStatus = document.getElementById("formStatus");
+    const attendanceSelect = document.getElementById("attendance");
+    const guestCountGroup = document.getElementById("guestCountGroup");
+    const guestsSelect = document.getElementById("guests");
+    const submitButton = rsvpForm?.querySelector('button[type="submit"]');
 
-    const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
-    );
+    function updateGuestField() {
+        if (!attendanceSelect || !guestCountGroup || !guestsSelect) return;
 
-    const minutes = Math.floor(
-        (difference % (1000 * 60 * 60)) /
-        (1000 * 60)
-    );
+        const attending = attendanceSelect.value === "Yes";
+        guestCountGroup.hidden = !attending;
+        guestsSelect.required = attending;
 
-    const seconds = Math.floor(
-        (difference % (1000 * 60)) /
-        1000
-    );
-
-
-    daysElement.textContent = String(days).padStart(3, "0");
-
-    hoursElement.textContent = String(hours).padStart(2, "0");
-
-    minutesElement.textContent = String(minutes).padStart(2, "0");
-
-    secondsElement.textContent = String(seconds).padStart(2, "0");
-
-}
-
-
-// Start countdown
-updateCountdown();
-
-setInterval(updateCountdown, 1000);
-
-
-
-
-// =========================================
-// 3. RSVP FORM - GOOGLE SHEETS CONNECTION
-// =========================================
-
-
-// Paste your deployed Apps Script Web App URL here.
-
-const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbwwWPvOz8rVnMQfV8wjAhZJeYro0N2SJayqHOBCv4-p6Iwb_QuzEIND6HAecsffXiSX8A/exec";
-
-
-const rsvpForm = document.getElementById("rsvpForm");
-
-const formStatus = document.getElementById("formStatus");
-
-
-if (rsvpForm && formStatus) {
-
-    rsvpForm.addEventListener("submit", async function (event) {
-
-        event.preventDefault();
-
-
-        // Collect form information
-        const fullName =
-            document.getElementById("fullName").value.trim();
-
-        const attendance =
-            document.getElementById("attendance").value;
-
-        const guests =
-            document.getElementById("guests").value;
-
-        const message =
-            document.getElementById("message").value.trim();
-
-
-        // Basic validation
-        if (!fullName || !attendance) {
-
-            formStatus.textContent =
-                "Please complete all required fields.";
-
-            return;
-
+        if (!attending) {
+            guestsSelect.value = "1";
         }
+    }
 
+    if (attendanceSelect) {
+        attendanceSelect.addEventListener("change", updateGuestField);
+        updateGuestField();
+    }
 
-        // Check that the Apps Script URL has been entered
-        if (!GOOGLE_SCRIPT_URL.startsWith(
-            "https://script.google.com/macros/s/"
-        )) {
+    if (rsvpForm && formStatus && attendanceSelect && guestsSelect) {
+        rsvpForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
 
-            formStatus.textContent =
-                "The RSVP system has not been configured yet.";
+            const fullName = document.getElementById("fullName").value.trim();
+            const attendance = attendanceSelect.value;
+            const message = document.getElementById("message").value.trim();
 
-            return;
+            if (!fullName || !attendance) {
+                showStatus("Please enter your name and select your attendance response.", true);
+                return;
+            }
 
-        }
+            if (attendance === "Yes" && !guestsSelect.value) {
+                showStatus("Please select the number of guests.", true);
+                return;
+            }
 
+            // Guests who cannot attend are submitted as 0.
+            const guests = attendance === "Yes" ? guestsSelect.value : "0";
 
-        // Prepare submission
-        const formData = new URLSearchParams();
+            const formData = new URLSearchParams();
+            formData.append("fullName", fullName);
+            formData.append("attendance", attendance);
+            formData.append("guests", guests);
+            formData.append("message", message);
 
-        formData.append("fullName", fullName);
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = "Submitting...";
+            }
+            showStatus("Submitting your response…", false);
 
-        formData.append("attendance", attendance);
+            try {
+                // no-cors is retained for compatibility with the existing Apps Script setup.
+                // The browser cannot read the response body in no-cors mode.
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    body: formData
+                });
 
-        formData.append("guests", guests);
+                showStatus("Thank you. Your RSVP has been sent.", false);
+                rsvpForm.reset();
+                updateGuestField();
+            } catch (error) {
+                console.error("RSVP submission error:", error);
+                showStatus("Something went wrong. Please try submitting again.", true);
+            } finally {
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = 'Submit RSVP <span aria-hidden="true">↗</span>';
+                }
+            }
+        });
+    }
 
-        formData.append("message", message);
-
-
-        // Disable the button while submitting
-        const submitButton =
-            rsvpForm.querySelector('button[type="submit"]');
-
-        submitButton.disabled = true;
-
-        submitButton.textContent = "Submitting...";
-
-        formStatus.textContent = "Sending your RSVP...";
-
-
-        try {
-
-            /*
-             * no-cors avoids a browser CORS preflight.
-             * The response is opaque, so the browser cannot
-             * read the server's success/error message.
-             */
-
-            await fetch(GOOGLE_SCRIPT_URL, {
-
-                method: "POST",
-
-                mode: "no-cors",
-
-                body: formData
-
-            });
-
-
-            formStatus.textContent =
-                "Your RSVP has been sent. Thank you for responding!";
-
-
-            rsvpForm.reset();
-
-
-        } catch (error) {
-
-            console.error("RSVP submission error:", error);
-
-            formStatus.textContent =
-                "We could not send your RSVP. Please try again.";
-
-
-        } finally {
-
-            submitButton.disabled = false;
-
-            submitButton.innerHTML =
-                'Submit RSVP <span>↗</span>';
-
-        }
-
-    });
-
-}
+    function showStatus(message, isError) {
+        if (!formStatus) return;
+        formStatus.textContent = message;
+        formStatus.classList.toggle("error", Boolean(isError));
+    }
+});

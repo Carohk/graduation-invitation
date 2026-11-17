@@ -1,57 +1,25 @@
-
 # Graduation Invitation Website
 
-A digital graduation invitation website for the graduation celebration on 4 December 2026.
+## Files
+- `index.html` — invitation content and form structure
+- `style.css` — layout, colours, envelope animation and responsive styling
+- `script.js` — envelope interaction, countdown and RSVP submission
 
-## Project Structure
+## Run locally
+Open `index.html` in a browser, or use the Live Server extension in VS Code.
 
-graduation-invitation/
-│
-├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   └── script.js
-├── assets/
-└── README.md
+## Publish with Git
+From the project folder in PowerShell:
 
-## Technologies
+```powershell
+git add index.html style.css script.js README.md
+git commit -m "Regenerate graduation invitation files"
+git push
+```
 
-- HTML5
-- CSS3
-- JavaScript
-- Google Apps Script (planned)
-- Google Sheets (planned)
-- GitHub Pages (deployment)
+GitHub Pages should remain configured to deploy from the `main` branch and the repository root.
 
-## Features
-
-- Interactive envelope opening screen
-- Graduation invitation landing page
-- Live graduation countdown
-- Graduation celebration details
-- RSVP form interface
-- Responsive design for mobile and desktop
-
-## Graduation Date
-
-Friday, 4 December 2026.
-
-## Running the Project
-
-1. Open the project folder in Visual Studio Code.
-2. Open index.html.
-3. Use Live Server to preview the website.
-4. Click the envelope to reveal the invitation.
-
-## Deployment
-
-The website will be hosted using GitHub Pages.
-
-## Future Improvements
-
-- Add the graduate's personal graduation photograph.
-- Connect the RSVP form to Google Apps Script.
-- Store guest responses in Google Sheets.
-- Add an RSVP confirmation message.
-- Add venue and celebration details.
+## RSVP note
+The form posts to the existing Google Apps Script Web App URL in `script.js`.
+When someone selects **No**, the guest-count control is hidden and the form sends `guests=0`.
+Check the connected Google Sheet after a test submission to confirm that the Apps Script records zero correctly. If the Apps Script replaces zero with a default value, its server-side handler will need a small matching update.
